@@ -1,0 +1,28 @@
+{
+  "name": "tic.tac.toe",
+  "version": "1.0.0",
+  "description": "A stateless Tic Tac Toe implementation",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musasoftlabx/Tic.Tac.Toe.node.js.git"
+  },
+  "keywords": [
+    "tic",
+    "tac",
+    "toe"
+  ],
+  "author": "Musa Mutetwi Muliro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/musasoftlabx/Tic.Tac.Toe.node.js/issues"
+  },
+  "homepage": "https://github.com/musasoftlabx/Tic.Tac.Toe.node.js#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

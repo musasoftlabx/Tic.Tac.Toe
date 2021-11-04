@@ -4,7 +4,7 @@
   "description": "A stateless Tic Tac Toe implementation",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/musasoftlabx/Tic.Tac.Toe.node.js#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
   }
 }

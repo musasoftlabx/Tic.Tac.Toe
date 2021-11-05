@@ -1,4 +1,55 @@
-const CurrentTurn = (board) => {
+// Initialize the game.
+const game = (board) => {
+  let position = move(board);
+  return AddBoard(board, position);
+};
+
+// Return the index of the next move.
+const move = (board) => {
+  switch (GameCounter(board)) {
+    case 0:
+    case 1:
+      return FirstMove(board);
+      break;
+    case 2:
+      return SecondMove(board);
+      break;
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+      return IncrementalMove(board);
+      break;
+  }
+};
+
+// Count the number of moves in the game.
+const GameCounter = (board) => {
+  let counter = 0;
+
+  board.forEach((element) => {
+    if (element !== " ") counter++;
+  });
+
+  return counter;
+};
+
+// Adds new move and returns the new board
+const AddBoard = (board, position) => {
+  let move = WhoseTurn(board);
+  let NewBoard = [];
+
+  for (let i = 0; i < board.length; i++) {
+    i === position ? NewBoard.push(move) : NewBoard.push(board[i]);
+  }
+
+  return NewBoard;
+};
+
+//Checks if its x or o's turn
+const WhoseTurn = (board) => {
   let x = 0,
     o = 0;
 
@@ -10,20 +61,11 @@ const CurrentTurn = (board) => {
   return x === o ? "x" : "o";
 };
 
-const AddBoard = (board, position) => {
-  let move = CurrentTurn(board);
-  let NewBoard = [];
-
-  for (let i = 0; i < board.length; i++) {
-    i === position ? NewBoard.push(move) : NewBoard.push(board[i]);
-  }
-
-  return NewBoard;
-};
-
+// Declare the first move of the game. In this case, the first move is always the center square.
 const FirstMove = (board) =>
   board.indexOf("x") === 4 || board.indexOf("x") === -1 ? 0 : 4;
 
+// Declare the second move of the game.
 const SecondMove = (board) => {
   switch (board.indexOf("o")) {
     case 1:
@@ -45,7 +87,8 @@ const SecondMove = (board) => {
   }
 };
 
-const winningMove = (board) => {
+// Determine if there is a winning move.
+const WinningMove = (board) => {
   var WinningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -82,19 +125,10 @@ const winningMove = (board) => {
   return WinningIndex;
 };
 
-const GameCounter = (board) => {
-  let counter = 0;
-
-  board.forEach((element) => {
-    if (element !== " ") counter++;
-  });
-
-  return counter;
-};
-
+// Return the best possible move
 const IncrementalMove = (board) => {
-  if (typeof winningMove(board) === "number") {
-    return winningMove(board);
+  if (typeof WinningMove(board) === "number") {
+    return WinningMove(board);
   }
 
   switch (GameCounter(board)) {
@@ -127,29 +161,5 @@ const IncrementalMove = (board) => {
   }
 };
 
-const move = (board) => {
-  switch (GameCounter(board)) {
-    case 0:
-    case 1:
-      return FirstMove(board);
-      break;
-    case 2:
-      return SecondMove(board);
-      break;
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-      return IncrementalMove(board);
-      break;
-  }
-};
-
-const game = (board) => {
-  let position = move(board);
-  return AddBoard(board, position);
-};
-
+// Export the game.
 module.exports = game;

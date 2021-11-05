@@ -1,13 +1,13 @@
-/* 
-Project: Tic Tac Toe
+/*
+ * Project: Tic Tac Toe
  * Date: 03/11/2021
  * Author: Musa Mutetwi
  * Description: This is a Tic Tac Toe game
  * Score:
  *  1️⃣ Your api implements the specified interface: ✔️
- *  2️⃣ Your api rejects invalid boards and accepts valid boards: ✔️ (app.js Line 30)
+ *  2️⃣ Your api rejects invalid boards and accepts valid boards: ✔️ (app.js Line 31)
  *  3️⃣ Your code is readable, easy to understand and short: 🙏
- *  4️⃣ You successfully implement the strategy above (do not implement Minimax): ✔️
+ *  4️⃣ You successfully implement the strategy above (do not implement Minimax): ✔️ (game.js Line 128)
  */
 
 // Import express

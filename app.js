@@ -23,25 +23,30 @@ const PORT = process.env.PORT || "3333";
 app.get("/", (req, res) => {
   const _board = req.query.board;
 
-  // Check if the _board string is valid
-  const BoardIsValid = _board
-    .split("")
-    .every((value) => value === "x" || value === "o" || value === " ");
-
-  if (_board.length !== 9 || !BoardIsValid) {
-    res.status(400).send("Invalid board");
+  // Check if the _board exists
+  if (!_board) {
+    res.status(401).send("Please provide a board parameter");
   } else {
-    // Set header to plain text to prevent space trimming
-    res.setHeader("Content-Type", "text/plain");
+    // Check if the _board string is valid
+    const BoardIsValid = _board
+      .split("")
+      .every((value) => value === "x" || value === "o" || value === " ");
 
-    // Create array from _board
-    const board = Array.from(_board);
+    if (_board.length !== 9 || !BoardIsValid) {
+      res.status(400).send("Invalid board");
+    } else {
+      // Set header to plain text to prevent space trimming
+      res.setHeader("Content-Type", "text/plain");
 
-    // Import game logic
-    const game = require("./game");
+      // Create array from _board
+      const board = Array.from(_board);
 
-    // Invoke game logic
-    res.send(game(board).toString().split(",").join(""));
+      // Import game logic
+      const game = require("./game");
+
+      // Invoke game logic
+      res.send(game(board).toString().split(",").join(""));
+    }
   }
 });
 
